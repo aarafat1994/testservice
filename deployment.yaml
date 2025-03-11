@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-service
+  template:
+    metadata:
+      labels:
+        app: simple-service
+    spec:
+      containers:
+      - name: simple-service
+        image: gcr.io/testproject-453400/simple-service:latest
+        ports:
+        - containerPort: 8089
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "200m"
